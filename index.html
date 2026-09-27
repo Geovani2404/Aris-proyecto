@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aris | Fractional Ownership en Isla Cortés, Nuevo Altata</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Lucide-like Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1a4369',
+                            900: '#0f2b46',
+                            950: '#0a1d30',
+                        },
+                        sand: {
+                            50: '#fcfbf9',
+                            100: '#f7f4ef',
+                            200: '#ebd8c3',
+                            300: '#e2d9cc',
+                        },
+                        gold: {
+                            400: '#dfba61',
+                            500: '#d4af37',
+                            600: '#c5a059',
+                            700: '#a38038',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(15, 43, 70, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .gold-gradient-text {
+            background: linear-[#d4af37], #f3e5ab);
+            background: linear-gradient(135deg, #fceabb 0%, #d4af37 50%, #a88028 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #c5a059 100%);
+        }
+        .bg-gold-gradient:hover {
+            background: linear-gradient(135deg, #e5be48 0%, #d4af37 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(15, 43, 70, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-sand-100 font-sans text-navy-900 antialiased selection:bg-gold-500 selection:text-white">
+
+    <!-- Header / Navegación -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-nav border-b border-white/10" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/50 flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <i class="fa-solid me-0 fa-compass text-gold-500 text-xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-2xl font-bold tracking-widest text-white uppercase">ARIS</span>
+                        <span class="text-[9px] tracking-[0.25em] text-gold-400 uppercase font-semibold">Isla Cortés</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#concepto" class="text-sm font-medium text-gray-200 hover:text-gold-400 transition-colors">El Concepto</a>
+                    <a href="#departamentos" class="text-sm font-medium text-gray-200 hover:text-gold-400 transition-colors">Departamentos</a>
+                    <a href="#amenidades" class="text-sm font-medium text-gray-200 hover:text-gold-400 transition-colors">Amenidades</a>
+                    <a href="#calculadora" class="text-sm font-medium text-gray-200 hover:text-gold-400 transition-colors">Calculadora</a>
+                    <a href="#galeria" class="text-sm font-medium text-gray-200 hover:text-gold-400 transition-colors">Galería</a>
+                    <a href="#faq" class="text-sm font-medium text-gray-200 hover:text-gold-400 transition-colors">Preguntas</a>
+                </nav>
+
+                <!-- Header CTA Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#contacto" class="bg-gold-gradient text-navy-950 font-semibold px-5 py-2.5 rounded-full text-sm shadow-lg hover:shadow-gold-500/20 hover:scale-105 transition-all">
+                        Agendar Cita
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-gold-400 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-950 border-b border-navy-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#concepto" class="block text-gray-300 hover:text-gold-400 py-2 text-base font-medium">El Concepto</a>
+            <a href="#departamentos" class="block text-gray-300 hover:text-gold-400 py-2 text-base font-medium">Departamentos</a>
+            <a href="#amenidades" class="block text-gray-300 hover:text-gold-400 py-2 text-base font-medium">Amenidades</a>
+            <a href="#calculadora" class="block text-gray-300 hover:text-gold-400 py-2 text-base font-medium">Calculadora de Inversión</a>
+            <a href="#galeria" class="block text-gray-300 hover:text-gold-400 py-2 text-base font-medium">Galería</a>
+            <a href="#faq" class="block text-gray-300 hover:text-gold-400 py-2 text-base font-medium">Preguntas Frecuentes</a>
+            <a href="#contacto" class="block w-full text-center bg-gold-gradient text-navy-950 font-semibold py-3 rounded-xl mt-4">
+                Agendar Cita / Informes
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-navy-950">
+        <!-- Background Image with Dark Gradient Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000&auto=format&fit=crop" 
+                 alt="Resort de lujo en playa" 
+                 class="w-full h-full object-cover object-center opacity-40 scale-105 transform animate-pulse duration-[10000ms]">
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/60 to-navy-950/80"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs sm:text-sm font-medium mb-8 backdrop-blur-md">
+                <i class="fa-solid fa-location-dot"></i> Isla Cortés, Nuevo Altata, Sinaloa
+            </div>
+
+            <!-- Headline -->
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-tight mb-6">
+                Tu departamento de playa exclusivo a una <span class="gold-gradient-text">fracción del costo</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                Disfruta del lujo de tener una residencia vacacional de <strong>3 recámaras y amenidades premium a solo 200m del mar</strong>, mediante co-propiedad legal con título individual.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <a href="#departamentos" class="w-full sm:w-auto bg-gold-gradient text-navy-950 font-bold px-8 py-4 rounded-xl text-base shadow-xl hover:shadow-gold-500/30 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3">
+                    <span>Explorar Departamentos</span>
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+                <a href="#calculadora" class="w-full sm:w-auto bg-navy-900/80 text-white border border-white/20 hover:border-gold-500/50 font-semibold px-8 py-4 rounded-xl text-base backdrop-blur-md hover:bg-navy-800 transition-all flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-calculator text-gold-400"></i>
+                    <span>Calcular Inversión</span>
+                </a>
+            </div>
+
+            <!-- Feature Highlights Pills -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-8 border-t border-white/10 text-left">
+                <div class="flex items-center gap-3 text-gray-300">
+                    <i class="fa-solid fa-umbrella-beach text-gold-400 text-2xl"></i>
+                    <div>
+                        <p class="text-xs text-gray-400">Ubicación</p>
+                        <p class="text-sm font-semibold text-white">A 200m de Playa</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 text-gray-300">
+                    <i class="fa-solid fa-bed text-gold-400 text-2xl"></i>
+                    <div>
+                        <p class="text-xs text-gray-400">Espacios</p>
+                        <p class="text-sm font-semibold text-white">3 Cuartos / 2 Baños</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 text-gray-300">
+                    <i class="fa-solid fa-swimming-pool text-gold-400 text-2xl"></i>
+                    <div>
+                        <p class="text-xs text-gray-400">Exclusividad</p>
+                        <p class="text-sm font-semibold text-white">Alberca & Club</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 text-gray-300">
+                    <i class="fa-solid fa-file-contract text-gold-400 text-2xl"></i>
+                    <div>
+                        <p class="text-xs text-gray-400">Seguridad Legal</p>
+                        <p class="text-sm font-semibold text-white">Escritura Individual</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concepto Fractional Ownership -->
+    <section id="concepto" class="py-24 bg-sand-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-semibold text-sm tracking-widest uppercase mb-2 block">Inteligencia Financiera Vacacional</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-navy-900 mb-6">¿Qué es el Fractional Ownership con Aris?</h2>
+                <p class="text-gray-600 text-base sm:text-lg leading-relaxed">
+                    Es la evolución inteligente de las propiedades vacacionales. Compras únicamente la fracción que realmente necesitas (por ejemplo, 1/8 o 1/4), siendo dueño real y legal de la propiedad, sin pagar por el 100% del tiempo que no utilizas.
+                </p>
+            </div>
+
+            <!-- Grid of Benefits -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-white p-8 rounded-2xl card-shadow border border-sand-200 hover:-translate-y-1 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-navy-900 text-gold-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-gold-500 group-hover:text-navy-950 transition-colors">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-navy-900 mb-3">Título de Propiedad Real</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        No es tiempo compartido. Adquieres una fracción con respaldo notarial, escriturada a tu nombre, heredable y vendible cuando lo desees.
+                    </p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="bg-white p-8 rounded-2xl card-shadow border border-sand-200 hover:-translate-y-1 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-navy-900 text-gold-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-gold-500 group-hover:text-navy-950 transition-colors">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-navy-900 mb-3">Inversión y Ahorro Inteligente</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Pagas solo una fracción del valor total de la propiedad y reduces drásticamente los costos anuales fijando un mantenimiento dividido.
+                    </p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="bg-white p-8 rounded-2xl card-shadow border border-sand-200 hover:-translate-y-1 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-navy-900 text-gold-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-gold-500 group-hover:text-navy-950 transition-colors">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-navy-900 mb-3">Cero Preocupaciones</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Aris administra el mantenimiento, limpieza, pago de servicios y concierge. Tú solo llegas a disfrutar de tu departamento impecable.
+                    </p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="bg-white p-8 rounded-2xl card-shadow border border-sand-200 hover:-translate-y-1 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-navy-900 text-gold-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-gold-500 group-hover:text-navy-950 transition-colors">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-navy-900 mb-3">Plusvalía Acelerada</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Isla Cortés en Nuevo Altata es una zona turística de alta plusvalía. Tu fracción incrementa su valor comercial con el desarrollo del destino.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Comparison Banner -->
+            <div class="mt-16 bg-navy-900 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl">
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                    <div class="lg:col-span-2">
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold mb-4">¿Por qué comprar el 100% si solo usas la playa 6 u 8 semanas al año?</h3>
+                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                            Una casa vacacional promedio pasa desocupada más del 80% del tiempo mientras genera gastos fijos completos de mantenimiento. Con Aris, optimizas tu capital sin sacrificar la comodidad ni el estatus.
+                        </p>
+                    </div>
+                    <div class="text-left lg:text-right">
+                        <a href="#calculadora" class="inline-flex items-center gap-2 bg-gold-gradient text-navy-950 font-bold px-6 py-3.5 rounded-xl text-sm hover:scale-105 transition-all">
+                            Simular Mi Fracción <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Departamentos -->
+    <section id="departamentos" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-gold-600 font-semibold text-sm tracking-widest uppercase mb-2 block">Diseño & Confort</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-navy-900">Nuestros Departamentos</h2>
+                </div>
+                <p class="text-gray-600 max-w-md mt-4 md:mt-0 text-sm sm:text-base">
+                    Espacios diseñados para el máximo confort familiar con arquitectura moderna costera y acabados de primera calidad.
+                </p>
+            </div>
+
+            <!-- Apartment Overview Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Large Image Showcase -->
+                <div class="lg:col-span-7 relative">
+                    <div class="relative h-[400px] sm:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+                        <img id="dept-main-img" 
+                             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop" 
+                             alt="Sala espaciosa departamento Aris" 
+                             class="w-full h-full object-cover transition-all duration-500">
+                        <div class="absolute bottom-6 left-6 right-6 bg-navy-950/80 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-white flex justify-between items-center">
+                            <div>
+                                <h4 class="font-serif text-lg font-bold">Unidad Modelo Isla Cortés</h4>
+                                <p class="text-xs text-gold-400">Totalmente amueblado y equipado por diseñadores profesionales</p>
+                            </div>
+                            <span class="bg-gold-500/20 text-gold-400 border border-gold-500/40 text-xs font-semibold px-3 py-1 rounded-full">
+                                3 Recámaras
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Small Thumbnails Bar -->
+                    <div class="grid grid-cols-3 gap-4 mt-4">
+                        <button onclick="changeDeptImage('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop')" class="h-24 rounded-xl overflow-hidden border-2 border-gold-500 focus:outline-none">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Sala">
+                        </button>
+                        <button onclick="changeDeptImage('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=1200&auto=format&fit=crop')" class="h-24 rounded-xl overflow-hidden border-2 border-transparent hover:border-gold-500 focus:outline-none">
+                            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Recámara Principal">
+                        </button>
+                        <button onclick="changeDeptImage('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1200&auto=format&fit=crop')" class="h-24 rounded-xl overflow-hidden border-2 border-transparent hover:border-gold-500 focus:outline-none">
+                            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Cocina integral">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Apartment Features List -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-sand-100 p-6 rounded-2xl border border-sand-200">
+                        <h3 class="font-serif text-2xl font-bold text-navy-900 mb-2">Distribución de Lujo</h3>
+                        <p class="text-gray-600 text-sm">Cada departamento está concebido para albergar cómodamente a familias o grupos de amigos con privacidad y confort.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Feature item -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-sand-200 card-shadow">
+                            <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-bed text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navy-900 text-base">3 Recámaras Espaciosas</h4>
+                                <p class="text-xs text-gray-600">Recámara principal con baño en suite y clóset vestidor, más dos habitaciones secundarias acondicionadas.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature item -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-sand-200 card-shadow">
+                            <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-bath text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navy-900 text-base">2 Baños Completo</h4>
+                                <p class="text-xs text-gray-600">Acabados de mármol, grifería de alta gama y canceles de cristal templado.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature item -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-sand-200 card-shadow">
+                            <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-utensils text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navy-900 text-base">Cocina Integral & Comedor</h4>
+                                <p class="text-xs text-gray-600">Totalmente equipada con barra de granito, electrodomésticos de acero inoxidable y utensilios de cocina.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature item -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-sand-200 card-shadow">
+                            <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-couch text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navy-900 text-base">Sala de Estar & Terraza Privada</h4>
+                                <p class="text-xs text-gray-600">Área social amplia conectada a un balcón con vistas a las áreas verdes y brisa marina.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="#contacto" class="w-full bg-navy-900 hover:bg-navy-800 text-white font-semibold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                            <i class="fa-solid fa-file-pdf text-gold-400"></i>
+                            <span>Solicitar Planta Arquitectónica y PDF</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Amenidades -->
+    <section id="amenidades" class="py-24 bg-navy-950 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-400 font-semibold text-sm tracking-widest uppercase mb-2 block">Estilo de Vida Resort</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold mb-6">Amenidades Exclusivas</h2>
+                <p class="text-gray-300 text-base sm:text-lg">
+                    Diseñadas para brindarte descanso, recreación y conveniencia total durante cada día de tu estancia en Nuevo Altata.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Amenity 1 -->
+                <div class="bg-navy-900/60 border border-white/10 rounded-2xl p-8 hover:border-gold-500/50 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 text-white/5 text-9xl group-hover:text-gold-500/10 transition-colors">
+                        <i class="fa-solid fa-water-ladder"></i>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-water-ladder"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-white">Alberca Exclusiva</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Piscina con área de asoleadero, chapoteadero infantil y camastros de lujo para disfrutar del clima cálido de Sinaloa.
+                    </p>
+                    <span class="text-xs font-semibold text-gold-400 flex items-center gap-1">
+                        Acceso restringido a co-propietarios <i class="fa-solid fa-lock text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Amenity 2 -->
+                <div class="bg-navy-900/60 border border-white/10 rounded-2xl p-8 hover:border-gold-500/50 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 text-white/5 text-9xl group-hover:text-gold-500/10 transition-colors">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-white">Playa a 200 Metros</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Camina escasos 3 minutos y sumérgete en las olas y la suave arena de la bahía de Nuevo Altata / Isla Cortés.
+                    </p>
+                    <span class="text-xs font-semibold text-gold-400 flex items-center gap-1">
+                        Caminata rápida directa <i class="fa-solid fa-shoe-prints text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Amenity 3 -->
+                <div class="bg-navy-900/60 border border-white/10 rounded-2xl p-8 hover:border-gold-500/50 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 text-white/5 text-9xl group-hover:text-gold-500/10 transition-colors">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-white">Seguridad 24/7</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Caseta de acceso controlado, cámaras de circuito cerrado y personal de vigilancia permanente para tu completa tranquilidad.
+                    </p>
+                    <span class="text-xs font-semibold text-gold-400 flex items-center gap-1">
+                        Entorno privado seguro <i class="fa-solid fa-key text-[10px]"></i>
+                    </span>
+                </div>
+
+                <!-- Amenity 4 -->
+                <div class="bg-navy-900/60 border border-white/10 rounded-2xl p-8 hover:border-gold-500/50 transition-all group relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-bell-concierge"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-white">Servicio de Concierge</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Atención personalizada para recepción de despensa, limpieza previa a tu llegada y coordinación de actividades acuáticas.
+                    </p>
+                </div>
+
+                <!-- Amenity 5 -->
+                <div class="bg-navy-900/60 border border-white/10 rounded-2xl p-8 hover:border-gold-500/50 transition-all group relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-tree-city"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-white">Áreas Verdes & Palapas</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Jardines impecables con zonas de convivencia al aire libre, asadores comunitarios y sombra para relajación.
+                    </p>
+                </div>
+
+                <!-- Amenity 6 -->
+                <div class="bg-navy-900/60 border border-white/10 rounded-2xl p-8 hover:border-gold-500/50 transition-all group relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-square-parking"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-white">Estacionamiento Asignado</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Cajones de estacionamiento techados y reservados para residentes, más espacios adicionales para visitas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulador / Calculadora Interactiva de Inversión -->
+    <section id="calculadora" class="py-24 bg-sand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-semibold text-sm tracking-widest uppercase mb-2 block">Simulador de Co-Propiedad</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-navy-900 mb-4">Calcula tu Fracción de Inversión</h2>
+                <p class="text-gray-600 text-base sm:text-lg">
+                    Selecciona la fracción que deseas adquirir y visualiza el costo estimado de entrada y las semanas de disfrute al año.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl card-shadow border border-sand-200 p-6 sm:p-10">
+                <!-- Step 1: Select Fraction -->
+                <div class="mb-10">
+                    <label class="block text-sm font-bold text-navy-900 uppercase tracking-wider mb-4 text-center">
+                        1. Elige la Fracción deseada:
+                    </label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <button type="button" onclick="setFraction('1/8')" id="btn-1-8" class="fraction-btn border-2 border-gold-500 bg-gold-500/10 text-navy-900 font-bold p-4 sm:p-6 rounded-2xl text-center hover:border-gold-500 transition-all">
+                            <span class="text-2xl sm:text-3xl block font-serif">1/8</span>
+                            <span class="text-xs text-gray-600 font-normal">6 Semanas / Año</span>
+                        </button>
+                        <button type="button" onclick="setFraction('1/4')" id="btn-1-4" class="fraction-btn border-2 border-sand-200 bg-sand-50 text-navy-900 font-bold p-4 sm:p-6 rounded-2xl text-center hover:border-gold-500 transition-all">
+                            <span class="text-2xl sm:text-3xl block font-serif">1/4</span>
+                            <span class="text-xs text-gray-600 font-normal">13 Semanas / Año</span>
+                        </button>
+                        <button type="button" onclick="setFraction('1/2')" id="btn-1-2" class="fraction-btn border-2 border-sand-200 bg-sand-50 text-navy-900 font-bold p-4 sm:p-6 rounded-2xl text-center hover:border-gold-500 transition-all">
+                            <span class="text-2xl sm:text-3xl block font-serif">1/2</span>
+                            <span class="text-xs text-gray-600 font-normal">26 Semanas / Año</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Live Results Box -->
+                <div class="bg-navy-950 text-white rounded-2xl p-6 sm:p-8 border border-navy-800">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center border-b border-navy-800 pb-6 mb-6">
+                        <div>
+                            <span class="text-xs text-gray-400 block uppercase mb-1">Inversión Estimada</span>
+                            <span id="res-inversion" class="text-2xl sm:text-3xl font-bold font-serif text-gold-400">$380,000 MXN</span>
+                            <span class="text-[10px] text-gray-400 block mt-1">Pago único de propiedad</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block uppercase mb-1">Semanas al Año</span>
+                            <span id="res-semanas" class="text-2xl sm:text-3xl font-bold font-serif text-white">6 Semanas</span>
+                            <span class="text-[10px] text-gray-400 block mt-1">Calendario rotativo equitativo</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block uppercase mb-1">Mantenimiento Mensual</span>
+                            <span id="res-mantenimiento" class="text-2xl sm:text-3xl font-bold font-serif text-gold-400">$1,250 MXN</span>
+                            <span class="text-[10px] text-gray-400 block mt-1">Servicios, HOA y limpiezas</span>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Callout -->
+                    <div class="flex items-center gap-3 bg-navy-900 p-4 rounded-xl text-xs sm:text-sm text-gray-300">
+                        <i class="fa-solid fa-lightbulb text-gold-400 text-xl shrink-0"></i>
+                        <p>
+                            <strong>Ahorro Estimado:</strong> Estás ahorrando cerca del <strong>87% del costo total</strong> de adquirir y mantener una propiedad de 3 cuartos individualmente en Isla Cortés.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CTA Form Trigger -->
+                <div class="mt-8 text-center">
+                    <a href="#contacto" onclick="prefillInterest()" class="inline-flex items-center justify-center gap-2 bg-gold-gradient text-navy-950 font-bold px-8 py-4 rounded-xl text-base shadow-lg hover:scale-105 transition-all">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Solicitar Corrida Financiera Detallada</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Fotos Interactiva -->
+    <section id="galeria" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-semibold text-sm tracking-widest uppercase mb-2 block">Experiencia Visual</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-navy-900 mb-4">Conoce Aris e Isla Cortés</h2>
+                <p class="text-gray-600 text-base sm:text-lg">
+                    Explora los espacios interiores, acabados de lujo y el privilegiado entorno costero de Nuevo Altata.
+                </p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md" onclick="openLightbox('https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1200&auto=format&fit=crop', 'Alberca Exclusiva Aris')">
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Alberca Aris">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-xs text-gold-400 font-semibold">Amenidad Exterior</span>
+                            <h4 class="text-white font-serif font-bold text-lg">Alberca Exclusiva & Camastros</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md" onclick="openLightbox('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop', 'Sala Espaciosa y Confortable')">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Interior Sala">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-xs text-gold-400 font-semibold">Interiores</span>
+                            <h4 class="text-white font-serif font-bold text-lg">Sala Principal de Estar</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md" onclick="openLightbox('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop', 'Playa a 200m en Isla Cortés')">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Playa a 200m">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-xs text-gold-400 font-semibold">Ubicación Privilegiada</span>
+                            <h4 class="text-white font-serif font-bold text-lg">Playa de Nuevo Altata (200m)</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md" onclick="openLightbox('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=1200&auto=format&fit=crop', 'Recámara Principal de Lujo')">
+                    <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Recámara Principal">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-xs text-gold-400 font-semibold">Interiores</span>
+                            <h4 class="text-white font-serif font-bold text-lg">Recámara Principal</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md" onclick="openLightbox('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1200&auto=format&fit=crop', 'Cocina Modernamente Equipada')">
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Cocina Equipada">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-xs text-gold-400 font-semibold">Interiores</span>
+                            <h4 class="text-white font-serif font-bold text-lg">Cocina Integral & Cubierta Mármol</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md" onclick="openLightbox('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop', 'Baños con Acabados de Primera')">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Baño Acabados">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <span class="text-xs text-gold-400 font-semibold">Interiores</span>
+                            <h4 class="text-white font-serif font-bold text-lg">Baño Principal Elegante</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Lightbox para la Galería -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-navy-950/95 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl hover:text-gold-400 transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-4xl w-full">
+            <img id="lightbox-img" src="" class="w-full h-auto max-h-[80vh] object-contain rounded-2xl shadow-2xl mb-4">
+            <p id="lightbox-caption" class="text-center font-serif text-white text-lg font-semibold"></p>
+        </div>
+    </div>
+
+    <!-- Preguntas Frecuentes (FAQ) -->
+    <section id="faq" class="py-24 bg-sand-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-gold-600 font-semibold text-sm tracking-widest uppercase mb-2 block">Resuelve tus Dudas</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-navy-900">Preguntas Frecuentes</h2>
+            </div>
+
+            <!-- Accordion Items -->
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl border border-sand-200 card-shadow overflow-hidden">
+                    <button onclick="toggleFaq('faq-1')" class="w-full px-6 py-5 text-left font-serif font-bold text-navy-900 text-lg flex justify-between items-center hover:text-gold-600 transition-colors">
+                        <span>¿Cómo funciona legalmente la escrituración de mi fracción?</span>
+                        <i id="icon-faq-1" class="fa-solid fa-chevron-down text-gold-500 text-sm transition-transform"></i>
+                    </button>
+                    <div id="faq-1" class="hidden px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-sand-100 pt-4">
+                        Cada fracción se formaliza ante Notario Público mediante un fideicomiso o escritura de co-propiedad. Tienes el 100% del dominio jurídico sobre tu porcentaje asignado, lo que te otorga derechos reales para heredar, hipotecar o vender tu fracción cuando lo desees.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl border border-sand-200 card-shadow overflow-hidden">
+                    <button onclick="toggleFaq('faq-2')" class="w-full px-6 py-5 text-left font-serif font-bold text-navy-900 text-lg flex justify-between items-center hover:text-gold-600 transition-colors">
+                        <span>¿Cómo se distribuyen y reservan las semanas de uso?</span>
+                        <i id="icon-faq-2" class="fa-solid fa-chevron-down text-gold-500 text-sm transition-transform"></i>
+                    </button>
+                    <div id="faq-2" class="hidden px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-sand-100 pt-4">
+                        Utilizamos un sistema inteligente y equitativo de reservación rotativa anual. Garantiza que todos los co-propietarios disfruten de semanas fijas o flexibles, incluyendo fechas de temporada alta (Semana Santa, Fin de Año, Verano) alternadas justamente.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl border border-sand-200 card-shadow overflow-hidden">
+                    <button onclick="toggleFaq('faq-3')" class="w-full px-6 py-5 text-left font-serif font-bold text-navy-900 text-lg flex justify-between items-center hover:text-gold-600 transition-colors">
+                        <span>¿Qué cubre la cuota mensual de mantenimiento?</span>
+                        <i id="icon-faq-3" class="fa-solid fa-chevron-down text-gold-500 text-sm transition-transform"></i>
+                    </button>
+                    <div id="faq-3" class="hidden px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-sand-100 pt-4">
+                        La cuota cubre el pago de servicios (Agua, Luz, Internet High-Speed), mantenimiento de alberca y áreas verdes, seguro de la propiedad contra imprevistos, limpieza profunda profesional entre estancias y administración del fideicomiso.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-2xl border border-sand-200 card-shadow overflow-hidden">
+                    <button onclick="toggleFaq('faq-4')" class="w-full px-6 py-5 text-left font-serif font-bold text-navy-900 text-lg flex justify-between items-center hover:text-gold-600 transition-colors">
+                        <span>¿Puedo rentar mis semanas si no las utilizo?</span>
+                        <i id="icon-faq-4" class="fa-solid fa-chevron-down text-gold-500 text-sm transition-transform"></i>
+                    </button>
+                    <div id="faq-4" class="hidden px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-sand-100 pt-4">
+                        ¡Sí! Si no vas a ocupar algunas de tus semanas asignadas, la plataforma de administración de Aris puede gestionar la renta vacacional de tus días para ayudarte a generar un ingreso extra o cubrir los costos anuales.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-navy-950 rounded-3xl p-8 sm:p-12 text-white shadow-2xl overflow-hidden relative">
+                
+                <!-- Contact Info Column -->
+                <div class="lg:col-span-5 space-y-8 relative z-10">
+                    <div>
+                        <span class="text-gold-400 font-semibold text-sm tracking-widest uppercase mb-2 block">Atención Personalizada</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-4">Agenda tu Cita o Solicita Información</h2>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Un asesor patrimonial de Aris te contactará para resolver tus preguntas, enviarte el dossier legal y agendar un recorrido presencial en Isla Cortés.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Ubicación del Desarrollo</h4>
+                                <p class="text-xs text-gray-300">Isla Cortés, Nuevo Altata, Sinaloa, México.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Teléfono & WhatsApp Directo</h4>
+                                <p class="text-xs text-gray-300">+52 (667) 123-4567</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Correo Electrónico</h4>
+                                <p class="text-xs text-gray-300">ventas@aris-fractional.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-xs text-gray-400">
+                            *Unidades limitadas por fase de desarrollo. Garantiza tu lugar con pre-precio de lanzamiento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="lg:col-span-7 bg-navy-900 p-6 sm:p-8 rounded-2xl border border-white/10 relative z-10">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Nombre Completo</label>
+                                <input type="text" required placeholder="Ej. Carlos Mendoza" class="w-full bg-navy-950 border border-white/20 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Teléfono / WhatsApp</label>
+                                <input type="tel" required placeholder="Ej. 667 000 0000" class="w-full bg-navy-950 border border-white/20 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Correo Electrónico</label>
+                                <input type="email" required placeholder="correo@ejemplo.com" class="w-full bg-navy-950 border border-white/20 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Fracción de Interés</label>
+                                <select id="interest-select" class="w-full bg-navy-950 border border-white/20 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                                    <option value="1/8">Fracción 1/8 (6 Semanas)</option>
+                                    <option value="1/4">Fracción 1/4 (13 Semanas)</option>
+                                    <option value="1/2">Fracción 1/2 (26 Semanas)</option>
+                                    <option value="Informacion General">Información General</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Mensaje o Comentarios</label>
+                            <textarea rows="4" placeholder="¿Cuándo te gustaría visitar las instalaciones o recibir más detalles?" class="w-full bg-navy-950 border border-white/20 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gold-gradient text-navy-950 font-bold py-4 rounded-xl text-base hover:scale-[1.01] transition-transform shadow-lg">
+                            Enviar Solicitud de Información
+                        </button>
+                    </form>
+                    
+                    <div id="form-success" class="hidden text-center py-8 text-gold-400 font-semibold">
+                        <i class="fa-solid fa-circle-check text-4xl block mb-2"></i>
+                        ¡Gracias por tu interés! Un asesor de Aris se pondrá en contacto contigo muy pronto.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 text-gray-400 py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-4">
+                    <a href="#" class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-gold-500/20 border border-gold-500/50 flex items-center justify-center">
+                            <i class="fa-solid fa-compass text-gold-500 text-sm"></i>
+                        </div>
+                        <span class="font-serif text-xl font-bold tracking-widest text-white uppercase">ARIS</span>
+                    </a>
+                    <p class="text-xs leading-relaxed">
+                        Redefiniendo las vacaciones de lujo en Isla Cortés, Nuevo Altata. Propiedad fraccionada legal, segura y accesible.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#concepto" class="hover:text-gold-400 transition-colors">¿Qué es Fractional?</a></li>
+                        <li><a href="#departamentos" class="hover:text-gold-400 transition-colors">Departamentos 3 Recámaras</a></li>
+                        <li><a href="#amenidades" class="hover:text-gold-400 transition-colors">Amenidades & Alberca</a></li>
+                        <li><a href="#calculadora" class="hover:text-gold-400 transition-colors">Calculadora de Fracciones</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Ubicación</h4>
+                    <p class="text-xs leading-relaxed mb-2">
+                        Paseo Isla Cortés S/N, Nuevo Altata, Navolato, Sinaloa, CP 80325.
+                    </p>
+                    <p class="text-xs text-gold-400">
+                        A solo 45 min de Culiacán.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-9 h-9 rounded-full bg-navy-900 border border-white/10 flex items-center justify-center hover:bg-gold-500 hover:text-navy-950 transition-colors">
+                            <i class="fa-brands fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-navy-900 border border-white/10 flex items-center justify-center hover:bg-gold-500 hover:text-navy-950 transition-colors">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-navy-900 border border-white/10 flex items-center justify-center hover:bg-gold-500 hover:text-navy-950 transition-colors">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 text-center text-xs text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Aris Fractional Ownership. Todos los derechos reservados.</p>
+                <div class="space-x-4">
+                    <a href="#" class="hover:underline">Aviso de Privacidad</a>
+                    <a href="#" class="hover:underline">Términos y Condiciones</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de WhatsApp Directo -->
+    <a href="https://wa.me/526671234567?text=Hola,%20me%20interesa%20recibir%20información%20sobre%20los%20departamentos%20Aris%20en%20Isla%20Cortés." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all duration-300 group">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out text-xs font-bold pl-0 group-hover:pl-2">
+            WhatsApp Asesor
+        </span>
+    </a>
+
+    <!-- Script de Interactividad -->
+    <script>
+        // Toggle para menú móvil
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cambiar imagen principal en sección departamentos
+        function changeDeptImage(src) {
+            const mainImg = document.getElementById('dept-main-img');
+            mainImg.src = src;
+        }
+
+        // Lógica de la Calculadora/Simulador
+        const fractionData = {
+            '1/8': { inversion: '$380,000 MXN', semanas: '6 Semanas', mantenimiento: '$1,250 MXN' },
+            '1/4': { inversion: '$720,000 MXN', semanas: '13 Semanas', mantenimiento: '$2,400 MXN' },
+            '1/2': { inversion: '$1,390,000 MXN', semanas: '26 Semanas', mantenimiento: '$4,500 MXN' }
+        };
+
+        let selectedFraction = '1/8';
+
+        function setFraction(fraction) {
+            selectedFraction = fraction;
+            
+            // Actualizar botones visualmente
+            document.querySelectorAll('.fraction-btn').forEach(btn => {
+                btn.classList.remove('border-gold-500', 'bg-gold-500/10');
+                btn.classList.add('border-sand-200', 'bg-sand-50');
+            });
+
+            const activeBtn = document.getElementById(`btn-${fraction.replace('/', '-')}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-sand-200', 'bg-sand-50');
+                activeBtn.classList.add('border-gold-500', 'bg-gold-500/10');
+            }
+
+            // Actualizar textos
+            document.getElementById('res-inversion').innerText = fractionData[fraction].inversion;
+            document.getElementById('res-semanas').innerText = fractionData[fraction].semanas;
+            document.getElementById('res-mantenimiento').innerText = fractionData[fraction].mantenimiento;
+        }
+
+        function prefillInterest() {
+            const select = document.getElementById('interest-select');
+            if (select) {
+                select.value = selectedFraction;
+            }
+        }
+
+        // Accordion FAQ
+        function toggleFaq(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(`icon-${id}`);
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Lightbox para Galería
+        function openLightbox(src, caption) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            const cap = document.getElementById('lightbox-caption');
+
+            img.src = src;
+            cap.innerText = caption;
+            modal.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox-modal').classList.add('hidden');
+        }
+
+        // Manejo del envío del Formulario
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            document.getElementById('contact-form').classList.add('hidden');
+            document.getElementById('form-success').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
